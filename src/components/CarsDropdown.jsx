@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import carsData from "../data/cars.json";
 import "./CarsDropdown.css";
+import { useNavigate } from "react-router-dom";
 
 function CarsDropdown() {
   const [cars, setCars] = useState([]);
@@ -11,6 +12,8 @@ function CarsDropdown() {
   const [totalPrice, setTotalPrice] = useState(null);
   const [reserveButton, setReserveButton] = useState(true);
   const [notification, setNotification] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const localStorageCars = localStorage.getItem("cars");
@@ -34,9 +37,13 @@ function CarsDropdown() {
     setSelectedCar(car);
     setTotalPrice(null);
   };
+  function redirectToReservations(reservationID) {
+    navigate(`/reservations/${reservationID}`);
+  }
 
   const handleReservation = (carID, startDate, endDate) => {
     const newReservation = {
+      reservationID: reservations.length + 1,
       carID,
       startDate: new Date(startDate).toISOString(),
       endDate: new Date(endDate).toISOString(),
@@ -46,6 +53,8 @@ function CarsDropdown() {
 
     setReservations(updatedReservations);
     localStorage.setItem("reservations", JSON.stringify(updatedReservations));
+
+    redirectToReservations(newReservation.reservationID);
   };
 
   const calculateTotalPrice = (car, startDate, endDate) => {
@@ -184,6 +193,24 @@ function CarsDropdown() {
             </p>
             <p className="paragraph">
               <strong>Horsepower:</strong> {selectedCar.horsePower}
+            </p>
+
+            <p className="paragraph">
+              <h4>Prices:</h4>
+              Price per 1h: <strong>{selectedCar.pricePer1h} EUR</strong>
+            </p>
+            <p className="paragraph">
+              Price per 2h: <strong>{selectedCar.pricePer2h} EUR</strong>
+            </p>
+            <p className="paragraph">
+              Price per 5h: <strong>{selectedCar.pricePer5h} EUR</strong>
+            </p>
+            <p className="paragraph">
+              Price per 1D: <strong>{selectedCar.pricePer24h} EUR</strong>
+            </p>
+            <p className="paragraph">
+              Base price per 1h:{" "}
+              <strong>{selectedCar.basePricePer1h} EUR</strong>
             </p>
           </div>
           <div className="car-image-container">

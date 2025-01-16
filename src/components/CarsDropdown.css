@@ -57,6 +57,10 @@ body {
   margin-top: 100px;
 }
 
+.input-datetime {
+  color: #2d2d2d;
+}
+
 .subheading {
   font-size: 24px;
   color: #4c90f0;

@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+}
+
+.home-page {
+  background-image: url("../images/HomeBackgroundImage.webp");
+  height: 100vh;
+  margin: 0;
+  position: relative;
+  padding: 40px 120px 0 80px;
+}
+
+.home-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, transparent -80%, #1b4fa2 100%);
+  z-index: 1;
+}
+
+.input-group {
+  width: 250px;
+}
+
+.input-group input {
+  cursor: pointer;
+}
+
+.home-page h1 {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 40px;
+}
+
+.home-page h3 {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-weight: 500;
+}
+
+.home-page-h3-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.home-page-dropdown {
+  display: flex;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  border: 4px solid #967903;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  gap: 10px;
+}
+
+.home-page-dropdown-date-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.home-page-dropdown-date-input label {
+  color: #333;
+  font-weight: 400;
+}
+
+.home-page-dropdown-date-input input {
+  background-color: white;
+  color: #333;
+  border: 2px solid #333;
+  cursor: pointer;
+}
+
+.home-page-dropdown-btn {
+  background-color: #205dc0;
+  color: #fff;
+  border: 2px solid #205dc0;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+}
+
+.home-page-dropdown-btn:hover {
+  background-color: #fff;
+  color: #205dc0;
+}
